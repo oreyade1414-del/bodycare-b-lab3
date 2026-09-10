@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="B-LABは、タイ古式マッサージを中心に心身を深く整えるリラクゼーションサロンです。" />
+  <title>B-LAB | Thai Traditional Therapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+:root{
+  --ink:#171714;
+  --paper:#f4f0e8;
+  --paper-2:#ece5da;
+  --gold:#b59a68;
+  --line:rgba(23,23,20,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Noto Serif JP",serif;
+  line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+.site-header{
+  position:fixed; inset:0 0 auto 0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 4vw;
+  color:white;
+  transition:.3s ease;
+}
+.site-header.scrolled{
+  background:rgba(20,20,18,.9);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand-main{
+  font-family:"Cormorant Garamond",serif;
+  font-size:29px; letter-spacing:.15em; font-weight:600;
+}
+.brand-sub{font-size:8px;letter-spacing:.26em;margin-top:6px}
+.nav{display:flex;gap:28px;align-items:center;font-size:12px;letter-spacing:.12em}
+.nav-cta{border:1px solid rgba(255,255,255,.65);padding:12px 18px}
+.menu-toggle{display:none;background:none;border:0;color:inherit;letter-spacing:.15em}
+.hero{
+  min-height:100svh;
+  position:relative;
+  background:
+    url("https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=2000&q=88")
+    center/cover no-repeat;
+  color:#fff;
+  display:flex; align-items:flex-end;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(9,9,8,.76),rgba(9,9,8,.22) 55%,rgba(9,9,8,.08)),
+             linear-gradient(0deg,rgba(9,9,8,.5),transparent 45%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 7vw 11vh;
+  max-width:920px;
+}
+.eyebrow,.section-kicker{
+  font-family:"Cormorant Garamond",serif;
+  letter-spacing:.28em;
+  font-size:13px;
+}
+.hero h1,.section h2,.split h2,.closing h2{
+  font-weight:500;
+  line-height:1.45;
+  letter-spacing:.06em;
+}
+.hero h1{font-size:clamp(42px,7vw,88px);margin:14px 0 22px}
+.hero-copy{font-size:clamp(14px,1.5vw,18px);margin-bottom:34px}
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  letter-spacing:.13em;
+  font-size:12px;
+  border:1px solid;
+  transition:.25s ease;
+}
+.btn-light{border-color:#fff;color:#fff}
+.btn-light:hover{background:#fff;color:#111}
+.btn-dark{border-color:var(--ink)}
+.btn-dark:hover{background:var(--ink);color:#fff}
+.scroll{
+  position:absolute;z-index:2;right:4vw;bottom:8vh;
+  writing-mode:vertical-rl;font-size:9px;letter-spacing:.3em;
+}
+.section{padding:120px 7vw}
+.intro-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:10vw;align-items:start;margin-top:26px
+}
+.intro h2{font-size:clamp(30px,4vw,54px);margin:0}
+.intro p{margin:0 0 18px}
+.image-band{height:62vh;background:center/cover no-repeat fixed}
+.image-band-one{
+  background-image:url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=2000&q=88")
+}
+.section-heading{
+  display:flex;justify-content:space-between;gap:40px;align-items:end;
+  border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:38px
+}
+.section-heading h2{font-size:clamp(32px,4vw,50px);margin:8px 0 0}
+.section-heading p{max-width:440px;margin:0;font-size:14px}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.menu-card{
+  background:var(--paper);padding:42px 32px;min-height:520px;position:relative
+}
+.menu-card.featured{background:var(--paper-2)}
+.menu-no{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:20px}
+.recommend{
+  position:absolute;right:28px;top:30px;font-size:9px;letter-spacing:.18em;color:var(--gold)
+}
+.menu-card h3{
+  font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:500;margin:28px 0 0
+}
+.jp{margin:0 0 24px;font-size:12px;letter-spacing:.08em}
+.menu-card>p:not(.jp):not(.note){font-size:13px;min-height:82px}
+.price-row{
+  display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:13px 0
+}
+.price-row span{font-size:12px}
+.price-row strong{font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:500}
+.note{font-size:10px;opacity:.64;margin-top:22px}
+.split{display:grid;grid-template-columns:1.2fr 1fr;min-height:720px;background:#171714;color:#f4f0e8}
+.split-image{
+  background:url("https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1400&q=88") center/cover no-repeat;
+}
+.split-copy{padding:90px 7vw;display:flex;flex-direction:column;justify-content:center}
+.split h2{font-size:clamp(36px,5vw,62px);margin:12px 0 28px}
+.split p{font-size:14px;opacity:.86}
+.access-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:center}
+.access-info dl{margin:0 0 36px}
+.access-info dl div{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--line);padding:16px 0}
+.access-info dt{font-size:11px;opacity:.64}
+.access-info dd{margin:0;font-size:13px}
+.access-image{
+  min-height:500px;
+  background:url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=88") center/cover no-repeat;
+}
+.closing{
+  min-height:72vh;
+  background:
+    linear-gradient(rgba(11,11,10,.55),rgba(11,11,10,.55)),
+    url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=2000&q=88") center/cover no-repeat;
+  color:white;display:grid;place-items:center;text-align:center
+}
+.closing h2{font-size:clamp(38px,6vw,72px);margin:16px 0 32px}
+footer{
+  background:#11110f;color:#eee8dc;padding:52px 7vw;
+  display:flex;justify-content:space-between;align-items:end
+}
+footer p{font-size:10px;opacity:.5;margin:0}
+.footer-brand{color:#eee8dc}
+
+@media (max-width:850px){
+  .site-header{padding:18px 20px}
+  .nav{
+    position:absolute;top:100%;left:0;right:0;
+    display:none;flex-direction:column;align-items:flex-start;gap:0;
+    background:rgba(20,20,18,.97);padding:18px 20px 28px
+  }
+  .nav.open{display:flex}
+  .nav a{width:100%;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav-cta{border:0}
+  .menu-toggle{display:block}
+  .hero-content{padding:0 24px 12vh}
+  .hero-copy br{display:none}
+  .section{padding:86px 24px}
+  .intro-grid,.access-grid,.split{grid-template-columns:1fr}
+  .intro-grid{gap:30px}
+  .image-band{height:46vh;background-attachment:scroll}
+  .section-heading{display:block}
+  .section-heading p{margin-top:16px}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-card{min-height:unset}
+  .split-image{min-height:52vh}
+  .split-copy{padding:70px 24px}
+  .access-image{min-height:420px}
+  footer{display:block}
+  footer p{margin-top:28px}
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="B-LAB home">
+      <span class="brand-main">B-LAB</span>
+      <span class="brand-sub">THAI TRADITIONAL THERAPY</span>
+    </a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">MENU</button>
+    <nav class="nav">
+      <a href="#concept">Concept</a>
+      <a href="#menu">Menu</a>
+      <a href="#space">Space</a>
+      <a href="#access">Access</a>
+      <a class="nav-cta" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">Reservation</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">SASAZUKA · TOKYO</p>
+        <h1>静けさの中で、<br>深く整う。</h1>
+        <p class="hero-copy">日常から少し離れ、呼吸と身体をゆるめる時間。<br>タイ古式を中心に、心身の余白を取り戻すための施術を。</p>
+        <a class="btn btn-light" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">ご予約はこちら</a>
+      </div>
+      <div class="scroll">SCROLL</div>
+    </section>
+
+    <section class="section intro" id="concept">
+      <div class="section-kicker">CONCEPT</div>
+      <div class="intro-grid">
+        <h2>ホテルのような上質さと、<br>気負わず通える心地よさ。</h2>
+        <div>
+          <p>B-LABは、タイ古式マッサージを中心に、首・肩・腰・脚などの疲れへ丁寧にアプローチするリラクゼーションサロンです。</p>
+          <p>伸ばす、ゆるめる、圧を入れる。単に強く押すのではなく、その日の身体に合わせてリズムを調整し、施術後の軽さと深いリラックスを目指します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-band image-band-one" aria-label="サロンイメージ"></section>
+
+    <section class="section" id="menu">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">MENU</div>
+          <h2>施術メニュー</h2>
+        </div>
+        <p>その日の疲れ方や目的に合わせてお選びください。</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <span class="menu-no">01</span>
+          <h3>Thai Traditional</h3>
+          <p class="jp">タイ古式マッサージ</p>
+          <p>ストレッチと圧を組み合わせ、全身をゆったり整えるB-LABの基本コース。</p>
+          <div class="price-row"><span>60 min</span><strong>¥6,000</strong></div>
+          <div class="price-row"><span>80 min</span><strong>¥7,200</strong></div>
+          <div class="price-row"><span>120 min</span><strong>¥10,400</strong></div>
+        </article>
+
+        <article class="menu-card featured">
+          <span class="menu-no">02</span>
+          <span class="recommend">RECOMMENDED</span>
+          <h3>Thai + Oil Foot</h3>
+          <p class="jp">タイ古式＋オイルフット</p>
+          <p>足元の重さやむくみが気になる方へ。全身と足をまとめて整える人気の組み合わせ。</p>
+          <div class="price-row"><span>70 min</span><strong>¥9,350</strong></div>
+          <div class="price-row"><span>100 min</span><strong>¥12,100</strong></div>
+          <div class="price-row"><span>130 min</span><strong>¥14,850</strong></div>
+        </article>
+
+        <article class="menu-card">
+          <span class="menu-no">03</span>
+          <h3>Customized Care</h3>
+          <p class="jp">お悩み別ケア</p>
+          <p>首・肩・腰・脚など、特に気になる部分を中心に施術内容を調整します。</p>
+          <div class="price-row"><span>Consultation</span><strong>Free</strong></div>
+          <p class="note">※掲載価格・メニューは変更になる場合があります。最新情報は予約ページをご確認ください。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="split" id="space">
+      <div class="split-image"></div>
+      <div class="split-copy">
+        <div class="section-kicker">SPACE</div>
+        <h2>余白まで、<br>施術の一部に。</h2>
+        <p>落ち着いた照明、木や石を感じる色調、静かな音。施術前から気持ちが切り替わるような空間づくりを大切にしています。</p>
+        <p>初めての方にも過ごしやすく、仕事帰りや休日のリセットにも。</p>
+      </div>
+    </section>
+
+    <section class="section access" id="access">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">ACCESS</div>
+          <h2>B-LAB 笹塚店</h2>
+        </div>
+      </div>
+      <div class="access-grid">
+        <div class="access-info">
+          <dl>
+            <div><dt>営業時間</dt><dd>10:00 – 23:30</dd></div>
+            <div><dt>予約</dt><dd>Hot Pepper Beauty より受付</dd></div>
+            <div><dt>エリア</dt><dd>笹塚 / 東京</dd></div>
+          </dl>
+          <a class="btn btn-dark" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">予約ページを開く</a>
+        </div>
+        <div class="access-image"></div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-inner">
+        <p class="eyebrow">B-LAB THAI TRADITIONAL THERAPY</p>
+        <h2>今日の疲れを、<br>今日のうちに。</h2>
+        <a class="btn btn-light" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">ご予約はこちら</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand">
+      <span class="brand-main">B-LAB</span>
+      <span class="brand-sub">THAI TRADITIONAL THERAPY</span>
+    </div>
+    <p>© B-LAB. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+const header = document.querySelector('.site-header');
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav');
+
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(open));
+});
+
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+</script>
+</body>
+</html>
