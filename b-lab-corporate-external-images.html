@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="株式会社ビーラボ。タイ古式マッサージ、整体、パーソナルキックボクササイズ、脱毛・エステを通じて、“癒し”と“活力”を提供します。" />
+  <title>株式会社ビーラボ | “癒し”と“活力”を提供したい。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#171714;
+      --paper:#f4f0e8;
+      --paper2:#e9e2d7;
+      --gold:#b59a68;
+      --line:rgba(23,23,20,.16);
+      --dark:#11110f;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",sans-serif;line-height:1.85}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .serif{font-family:"Noto Serif JP",serif}
+
+    .site-header{
+      position:fixed;inset:0 0 auto;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 4vw;color:#fff;transition:.3s ease;
+    }
+    .site-header.scrolled{background:rgba(15,15,13,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1)}
+    .brand{font-family:"Noto Serif JP",serif;font-size:clamp(24px,2.2vw,34px);font-weight:600;letter-spacing:.06em;white-space:nowrap}
+    .nav{display:flex;align-items:center;gap:24px;font-size:12px;letter-spacing:.08em}
+    .nav a{opacity:.9}
+    .nav-cta{border:1px solid rgba(255,255,255,.65);padding:11px 18px}
+    .menu-toggle{display:none;background:none;border:0;color:#fff;font-size:12px;letter-spacing:.14em}
+
+    .hero{min-height:100svh;position:relative;color:#fff;overflow:hidden;display:flex;align-items:flex-end;background:#111}
+    .hero-grid{position:absolute;inset:0;display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:1fr 1fr}
+    .hero-grid div{background-position:center;background-size:cover;filter:saturate(.78) contrast(1.05)}
+    .hero-a{grid-row:1/3;background-image:url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1800&q=90")}
+    .hero-b{background-image:url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=88")}
+    .hero-c{background-image:url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=88")}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,7,.8) 0%,rgba(8,8,7,.48) 46%,rgba(8,8,7,.23) 100%),linear-gradient(0deg,rgba(8,8,7,.58),transparent 50%)}
+    .hero-content{position:relative;z-index:3;padding:0 7vw 10vh;max-width:980px}
+    .hero h1{font-family:"Noto Serif JP",serif;font-size:clamp(40px,6.7vw,86px);font-weight:500;line-height:1.45;letter-spacing:.05em;margin:0 0 24px}
+    .hero-copy{max-width:690px;font-size:clamp(14px,1.4vw,18px);margin:0 0 34px}
+    .service-tags{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px}
+    .service-tags span{border:1px solid rgba(255,255,255,.42);padding:7px 11px;font-size:10px;letter-spacing:.06em;background:rgba(0,0,0,.16)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border:1px solid;letter-spacing:.1em;font-size:12px;transition:.25s}
+    .btn-light{border-color:#fff;color:#fff}.btn-light:hover{background:#fff;color:#111}
+    .btn-dark{border-color:var(--ink)}.btn-dark:hover{background:var(--ink);color:#fff}
+
+    .section{padding:110px 7vw}
+    .kicker{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:14px;letter-spacing:.26em}
+    .section h2,.split h2,.recruit h2{font-family:"Noto Serif JP",serif;font-weight:500;letter-spacing:.04em;line-height:1.55}
+    .lead-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:10vw;align-items:start;margin-top:20px}
+    .lead-grid h2{font-size:clamp(30px,4vw,52px);margin:0}
+    .lead-grid p{margin-top:0;font-size:15px}
+
+    .business{background:#f8f5ef}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:34px}
+    .section-heading h2{font-size:clamp(32px,4vw,50px);margin:6px 0 0}
+    .section-heading p{max-width:520px;margin:0;font-size:14px}
+    .business-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .business-card{min-height:430px;position:relative;overflow:hidden;color:#fff;padding:34px;display:flex;align-items:flex-end;background:#222}
+    .business-card::before{content:"";position:absolute;inset:0;background-position:center;background-size:cover;transition:transform .5s ease}
+    .business-card:hover::before{transform:scale(1.035)}
+    .business-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.76),rgba(0,0,0,.12) 70%)}
+    .business-card:nth-child(1)::before{background-image:url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=88")}
+    .business-card:nth-child(2)::before{background-image:url("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=88")}
+    .business-card:nth-child(3)::before{background-image:url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1400&q=88")}
+    .business-card:nth-child(4)::before{background-image:url("https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1400&q=88")}
+    .business-card .inner{position:relative;z-index:2}
+    .business-no{font-family:"Cormorant Garamond",serif;color:#dcc598;font-size:17px}
+    .business-card h3{font-family:"Noto Serif JP",serif;font-size:clamp(25px,3vw,38px);margin:5px 0 8px;font-weight:500}
+    .business-card p{margin:0;max-width:540px;font-size:13px;opacity:.92}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;min-height:680px;background:var(--dark);color:#f4f0e8}
+    .split-image{background:url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=88") center/cover no-repeat}
+    .split-copy{padding:80px 7vw;display:flex;flex-direction:column;justify-content:center}
+    .split h2{font-size:clamp(34px,5vw,60px);margin:12px 0 25px}
+    .split p{font-size:14px;opacity:.86;max-width:600px}
+
+    .recruit{padding:110px 7vw;background:var(--paper2)}
+    .recruit-top{display:grid;grid-template-columns:1fr 1fr;gap:9vw;margin-bottom:44px}
+    .recruit h2{font-size:clamp(34px,4.7vw,58px);margin:8px 0}
+    .recruit-intro{align-self:end;font-size:15px}
+    .jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+    .job{background:var(--paper2);padding:30px 24px;min-height:220px}
+    .job span{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:16px}
+    .job h3{font-family:"Noto Serif JP",serif;font-size:20px;margin:13px 0 10px;font-weight:500}
+    .job p{font-size:12px;margin:0}
+    .recruit-info{margin-top:34px;display:block;max-width:760px}
+    .recruit-points{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .point{border:1px solid var(--line);padding:18px}
+    .point strong{display:block;font-size:14px;margin-bottom:4px}.point small{font-size:11px;opacity:.66}
+    .recruit-note{font-size:12px;opacity:.68;margin-top:14px}
+    .contact-box{background:var(--dark);color:#fff;padding:30px}
+    .contact-box h3{font-family:"Noto Serif JP",serif;font-weight:500;font-size:23px;margin:0 0 13px}
+    .contact-box p{font-size:13px;opacity:.82;margin-bottom:22px}
+
+    .closing{min-height:60vh;background:linear-gradient(rgba(12,12,10,.62),rgba(12,12,10,.62)),url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=2000&q=88") center/cover no-repeat;color:#fff;display:grid;place-items:center;text-align:center;padding:70px 24px}
+    .closing h2{font-family:"Noto Serif JP",serif;font-weight:500;font-size:clamp(34px,5vw,64px);line-height:1.5;margin:12px 0 28px}
+    footer{background:#0d0d0c;color:#e9e2d7;padding:40px 7vw;display:flex;justify-content:space-between;align-items:end}
+    footer p{font-size:10px;opacity:.5;margin:0}
+
+    @media(max-width:900px){
+      .site-header{padding:16px 20px}
+      .brand{font-size:26px}
+      .menu-toggle{display:block}
+      .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(15,15,13,.97);padding:8px 20px 20px}
+      .nav.open{display:flex}.nav a{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}.nav-cta{border:0}
+      .hero-grid{grid-template-columns:1fr 1fr;grid-template-rows:55% 45%}
+      .hero-a{grid-column:1/3;grid-row:1}.hero-b{grid-column:1;grid-row:2}.hero-c{grid-column:2;grid-row:2}
+      .hero-overlay{background:linear-gradient(0deg,rgba(8,8,7,.76),rgba(8,8,7,.25)),linear-gradient(90deg,rgba(8,8,7,.35),transparent)}
+      .hero-content{padding:0 24px 8vh}.hero h1{font-size:clamp(40px,12vw,58px)}
+      .section{padding:78px 24px}.lead-grid,.access-grid,.split,.recruit-top,.recruit-info{grid-template-columns:1fr}
+      .lead-grid{gap:24px}.section-heading{display:block}.section-heading p{margin-top:14px}
+      .business-grid{grid-template-columns:1fr}.business-card{min-height:370px}
+      .split-image{min-height:48vh}.split-copy{padding:62px 24px}
+      .jobs{grid-template-columns:1fr 1fr}.recruit{padding:78px 24px}.recruit-top{gap:18px}
+      footer{display:block}footer p{margin-top:20px}
+    }
+    @media(max-width:560px){
+      .jobs,.recruit-points{grid-template-columns:1fr}
+      .job{min-height:auto}
+      .service-tags span{font-size:9px}
+      .hero-copy br{display:none}
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ビーラボ</a>
+  <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">MENU</button>
+  <nav class="nav">
+    <a href="#concept">Concept</a>
+    <a href="#business">Business</a>
+    <a href="#recruit">Recruit</a>
+    <a class="nav-cta" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">Reservation</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"><div class="hero-a"></div><div class="hero-b"></div><div class="hero-c"></div></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>“癒し”と“活力”を<br>提供したい。</h1>
+      <div class="service-tags">
+        <span>タイ古式マッサージ</span><span>整体</span><span>パーソナルキックボクササイズ</span><span>脱毛・エステ</span>
+      </div>
+      <p class="hero-copy">身体を休めることも、整えることも、動かすことも、自分を磨くことも。<br>ビーラボは、日常をより良くするためのボディケア＆ウェルネスサービスを展開しています。</p>
+      <a class="btn btn-light" href="#business">事業を見る</a>
+    </div>
+  </section>
+
+  <section class="section" id="concept">
+    <div class="kicker">OUR PHILOSOPHY</div>
+    <div class="lead-grid">
+      <h2>人が前向きに生きるための、<br>身体と心の土台をつくる。</h2>
+      <div>
+        <p>私たちが提供したいのは、単なる「施術」や「運動」ではありません。疲れた身体が軽くなる。姿勢や動きが整う。汗を流して気持ちが前を向く。鏡を見ることが少し楽しくなる。</p>
+        <p>タイ古式マッサージ、整体、パーソナルキックボクササイズ、脱毛・エステ。それぞれ異なるサービスを通じて、一人ひとりの毎日に“癒し”と“活力”を届けることを目指しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section business" id="business">
+    <div class="section-heading">
+      <div><div class="kicker">BUSINESS</div><h2>事業内容</h2></div>
+      <p>リラクゼーションからコンディショニング、フィットネス、ビューティーまで。身体に関わる複数の事業を展開しています。</p>
+    </div>
+    <div class="business-grid">
+      <article class="business-card"><div class="inner"><span class="business-no">01 / RELAXATION</span><h3>タイ古式マッサージ</h3><p>ストレッチと圧を組み合わせ、全身をゆったり整える施術。深いリラクゼーションと身体の軽さを目指します。</p></div></article>
+      <article class="business-card"><div class="inner"><span class="business-no">02 / CONDITIONING</span><h3>整体</h3><p>身体のバランスや動きに着目し、不調や疲れの原因に合わせてコンディションを整えます。</p></div></article>
+      <article class="business-card"><div class="inner"><span class="business-no">03 / FITNESS</span><h3>パーソナルキックボクササイズ</h3><p>キックボクシングの動きを取り入れたマンツーマントレーニング。楽しく身体を動かし、体力づくりとストレス発散をサポートします。</p></div></article>
+      <article class="business-card"><div class="inner"><span class="business-no">04 / BEAUTY</span><h3>脱毛・エステ</h3><p>清潔感と自信につながる美容ケアを提供。日常に取り入れやすく、継続しやすいサービスを目指しています。</p></div></article>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="split-image"></div>
+    <div class="split-copy">
+      <div class="kicker">BODY & MIND</div>
+      <h2>休むだけでも、<br>鍛えるだけでもない。</h2>
+      <p>身体の状態は、仕事や生活、気分にもつながっています。だからビーラボは、リラクゼーション・整体・運動・美容を一つの「より良く生きるための選択肢」として考えています。</p>
+      <p>その日の自分に必要なケアを選べる場所へ。</p>
+    </div>
+  </section>
+
+  <section class="recruit" id="recruit">
+    <div class="recruit-top">
+      <div><div class="kicker">RECRUIT</div><h2>一緒に、“癒し”と“活力”を<br>届ける仲間へ。</h2></div>
+      <p class="recruit-intro">ビーラボでは、各事業を通じてお客様の毎日に“癒し”と“活力”を届ける仲間を募集しています。採用に関するご相談・ご応募は、下記窓口よりお問い合わせください。</p>
+    </div>
+<div class="recruit-info">
+      <aside class="contact-box">
+        <h3>採用についてのお問い合わせ</h3>
+        <p>採用に関するご質問やご応募は、こちらからお気軽にお問い合わせください。</p>
+        <a class="btn btn-light" href="mailto:recruit@example.com">採用問い合わせ</a>
+        <p class="recruit-note" style="color:#fff;margin-bottom:0">※メールアドレスは仮設定です。実際の採用窓口に差し替えてください。</p>
+      </aside>
+    </div>
+  </section>
+  <section class="closing">
+    <div>
+      <div class="kicker">B-LAB</div>
+      <h2>明日の自分を、<br>今日より少し良く。</h2>
+      <a class="btn btn-light" href="#business">事業内容を見る</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand">株式会社ビーラボ</div>
+  <p>© B-LAB. All Rights Reserved.</p>
+</footer>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20));
+  toggle.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',String(open));
+  });
+  document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+</script>
+</body>
+</html>
