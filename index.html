@@ -41,6 +41,12 @@
 .store-row{padding:0;gap:0}.store-name{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:76px;padding:16px 10px}.store-booking{flex-shrink:0;margin:0;font-size:13px}.blog-gateway{display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid #b5a17a;background:#ffffff65;padding:22px 26px;margin-bottom:32px;transition:background .2s}.blog-gateway:hover{background:#fff}.blog-gateway strong{display:block;font:500 22px/1.6 var(--serif)}.blog-gateway>span>span{display:block;font-size:14px;margin-top:4px;color:#645c4e}.gateway-arrow{font-size:28px;color:#806738}.nav{gap:clamp(12px,1.3vw,24px)}
 @media(max-width:760px){.store-name{align-items:flex-start;flex-direction:column;gap:4px;padding:14px 2px;min-height:70px}.blog-gateway{padding:18px 20px}.blog-gateway strong{font-size:20px}.blog-gateway>span>span{font-size:14px}.nav{gap:0}}
 </style>
+<style>
+.information{background:#fffdf8;border-bottom:1px solid var(--line);padding-top:64px;padding-bottom:64px}.info-layout{display:grid;grid-template-columns:1fr 2fr;gap:48px}.info-layout h2{margin-bottom:12px}.info-layout p{margin:0;color:#6c6353;font-size:14px}.information-list{min-width:0;border-top:1px solid var(--line)}.information-item{display:grid;grid-template-columns:100px minmax(0,1fr) 24px;gap:12px 20px;padding:22px 8px;border-bottom:1px solid var(--line);align-items:center}.information-item time{grid-column:1/-1;font-size:13px;color:#6c6353}.information-item strong{font-size:16px;font-weight:500;line-height:1.8}.info-category{font-size:12px;letter-spacing:.1em;color:var(--gold)}.info-arrow{color:var(--gold)}a.information-item:hover{background:#f4eee3}
+footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{max-width:1320px;margin:auto;display:grid;grid-template-columns:1fr .7fr 1.3fr;gap:48px;padding-bottom:40px}.footer-brand .brand{white-space:normal}.footer-brand p{margin-top:16px;font-size:14px}.footer-nav{display:grid;align-content:start;gap:4px;font-size:14px}.footer-nav a{display:flex;align-items:center;min-height:44px}.footer-company h2{font:500 24px/1.6 var(--serif);margin:0 0 18px}.footer-company dl{margin:0;font-size:14px}.footer-company dl>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:16px;border-top:1px solid #ffffff26;padding:14px 0}.footer-company dt{color:#b9baaf}.footer-company dd{margin:0;overflow-wrap:anywhere}.footer-company a{text-decoration:underline;text-underline-offset:5px}.footer-bottom{max-width:1320px;margin:auto;border-top:1px solid #ffffff26;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-bottom p{margin:0}.footer-bottom a{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:1050px){.footer-inner{grid-template-columns:1fr 1fr}.footer-company{grid-column:1/-1}}
+@media(max-width:760px){.info-layout{grid-template-columns:minmax(0,1fr);gap:24px}.information{padding:48px 24px}.information-item{grid-template-columns:minmax(0,1fr) 24px;gap:6px;padding:18px 2px}.information-item time,.info-category{grid-column:1}.information-item strong{grid-column:1;grid-row:auto}.info-arrow{grid-column:2;grid-row:2}.footer-inner{grid-template-columns:minmax(0,1fr);gap:32px}.footer-company{grid-column:auto}.footer-nav{grid-template-columns:1fr 1fr}.footer-bottom{align-items:flex-start;flex-direction:column;gap:8px}footer.site-footer{padding:48px 24px 24px}}
+</style>
 </head>
 <body class="variant-hybrid">
 <header class="site-header">
@@ -70,6 +76,13 @@
     </div>
   </section>
 
+<section class="section information" id="information" aria-labelledby="information-title">
+<div class="info-layout"><div><div class="kicker">INFORMATION</div><h2 id="information-title">お知らせ</h2><p>ビーラボからの最新情報。</p></div>
+<div class="information-list">
+<div class="information-item"><time datetime="2026-09-11">2026.09.11</time><span class="info-category">NEWS</span><strong>コーポレートサイトを公開しました</strong></div>
+<a class="information-item" href="blogs.html"><span class="info-category">BLOG</span><strong>各店舗のブログはこちら</strong><span class="info-arrow" aria-hidden="true">→</span></a>
+<a class="information-item" href="#franchise"><span class="info-category">CAREER</span><strong>独立支援制度（FC化）のご案内</strong><span class="info-arrow" aria-hidden="true">→</span></a>
+</div></div></section>
   <section class="section" id="concept">
     <div class="kicker">OUR PHILOSOPHY</div>
     <div class="lead-grid">
@@ -220,8 +233,8 @@
       <aside class="contact-box">
         <h3>採用・独立支援のお問い合わせ</h3>
         <p>採用へのご応募・ご質問、FCによる独立支援のご相談はこちらから。</p>
-        <a class="btn btn-light" href="mailto:recruit@example.com">採用・独立支援の問い合わせ</a>
-        <p class="recruit-note" style="color:#fff;margin-bottom:0">※メールアドレスは仮設定です。実際の採用窓口に差し替えてください。</p>
+        <p class="contact-pending">専用お問い合わせ窓口は準備中です。</p>
+        <p class="recruit-note" style="color:#fff;margin-bottom:0">ご予約・施術に関するお問い合わせは、各店舗の掲載ページをご確認ください。</p>
       </aside>
     </div>
   </section>
@@ -234,10 +247,12 @@
   </section>
 </main>
 
-<footer>
-  <div class="brand">株式会社ビーラボ</div>
-  <p>© B-LAB. All Rights Reserved.</p>
-</footer>
+<footer class="site-footer" id="company">
+<div class="footer-inner">
+<div class="footer-brand"><a class="brand" href="#top">株式会社ビーラボ</a><p>“癒し”と“活力”を提供したい。</p></div>
+<nav class="footer-nav" aria-label="フッターメニュー"><a href="#information">お知らせ</a><a href="#concept">ビーラボについて</a><a href="#business">事業内容</a><a href="#stores">店舗一覧・予約</a><a href="blogs.html">店舗ブログ</a><a href="#recruit">採用・独立支援</a></nav>
+<section class="footer-company" aria-labelledby="company-title"><h2 id="company-title">会社概要</h2><dl><div><dt>会社名</dt><dd>株式会社ビーラボ</dd></div><div><dt>事業内容</dt><dd>タイ古式・マタニティマッサージ<br>整体<br>パーソナルトレーニング＆キックボクシング<br>脱毛・エステ</dd></div><div><dt>店舗情報</dt><dd><a href="#stores">各店舗の情報・ご予約はこちら →</a></dd></div></dl></section>
+</div><div class="footer-bottom"><p>© B-LAB. All Rights Reserved.</p><a href="#top">ページ上部へ ↑</a></div></footer>
 
 <script>
   const header = document.querySelector('.site-header');
