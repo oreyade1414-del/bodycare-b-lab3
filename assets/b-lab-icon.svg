@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<title id="title">B-LAB body and mind symbol</title>
+<desc id="desc">癒しと活力の調和を表す抽象的なシンボル</desc>
+<rect width="1200" height="900" fill="#f4f0e8"/>
+<path d="M0 740C220 620 330 650 470 730c140 80 280 120 470 40 120-50 180-120 260-190v320H0Z" fill="#e9e2d7"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M355 610c-100-92-112-240-22-330 85-86 231-82 307 6 71 82 57 199-28 266-78 61-187 63-257 6Z" stroke="#171714" stroke-width="28"/>
+  <path d="M505 650c-20-139 8-286 102-384 74-77 169-119 288-123-22 95-71 173-150 229-85 60-168 82-240 71" stroke="#b59a68" stroke-width="28"/>
+  <path d="M515 664c99 20 199 4 286-47 86-50 143-124 170-222" stroke="#171714" stroke-width="12" opacity=".55"/>
+</g>
+<circle cx="602" cy="425" r="16" fill="#b59a68"/>
+<circle cx="602" cy="425" r="7" fill="#171714"/>
+</svg>
