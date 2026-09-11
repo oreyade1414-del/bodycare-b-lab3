@@ -1,7 +1,7 @@
 /* 新着動画の共有データ。ここへ登録するとトップInformationと動画ページへ同時反映。
 各項目: {title: "実際の動画タイトル", url: "https://www.youtube.com/watch?v=実際のID", date: "YYYY-MM-DD", channel: "社長のYouTube"}
 架空の動画や未公開動画は登録しない。YouTubeからの自動取得ではない。 */
-const blabVideos = [];
+const blabVideos = [{ title: "社長のYouTube｜ピックアップ動画", url: "https://www.youtube.com/watch?v=WIqGb9Yh4-g", date: "2026-09-11", dateType: "掲載日", channel: "社長のYouTube" }];
 (function () {
   const valid = blabVideos.filter(v => {
     try {
@@ -11,11 +11,23 @@ const blabVideos = [];
   }).sort((a,b) => b.date.localeCompare(a.date));
   function node(tag, text, cls) { const el = document.createElement(tag); if(text) el.textContent = text; if(cls) el.className = cls; return el; }
   function link(v, cls) { const a = node('a', '', cls); a.href=v.url; a.target='_blank'; a.rel='noopener noreferrer'; return a; }
-  function date(v) { const t=node('time',v.date.replaceAll('-','.')); t.dateTime=v.date; return t; }
+  function date(v) { const t=node('time',(v.dateType ? v.dateType + '：' : '') + v.date.replaceAll('-','.')); t.dateTime=v.date; return t; }
+  function thumbnail(v) {
+    const u=new URL(v.url);
+    const id=u.hostname==='youtu.be' ? u.pathname.slice(1) : u.searchParams.get('v');
+    if(!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) return null;
+    const img=document.createElement('img');
+    img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';
+    img.alt=v.title+'のサムネイル';
+    img.width=480; img.height=270; img.loading='lazy'; img.decoding='async';
+    img.style.cssText='display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;margin-bottom:18px;background:#1c1e19';
+    img.addEventListener('error',()=>{img.hidden=true;});
+    return img;
+  }
   const list=document.getElementById('video-list');
   if(list && valid.length) {
     document.getElementById('latest-videos').hidden=false;
-    valid.forEach(v => { const a=link(v,'video-card'); a.append(date(v),node('span',v.channel || 'YouTube','channel-label'),node('h3',v.title),node('span','YouTubeで見る ↗','watch')); list.append(a); });
+    valid.forEach(v => { const a=link(v,'video-card'); const img=thumbnail(v); if(img) a.append(img); a.append(date(v),node('span',v.channel || 'YouTube','channel-label'),node('h3',v.title),node('span','YouTubeで見る ↗','watch')); list.append(a); });
   }
   const news=document.getElementById('youtube-information');
   if(news && valid.length) {
