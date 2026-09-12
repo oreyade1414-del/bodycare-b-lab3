@@ -71,7 +71,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 .store-group h4{font:500 25px/1.6 var(--serif);margin:8px 0 0}
 @media(max-width:760px){.ownership-heading{display:block;margin-bottom:28px}.ownership-heading p{margin-top:12px}.ownership-heading h3{font-size:27px}.fc-ownership{padding:24px 16px;margin-top:48px}.store-group h4{font-size:23px}.ownership-nav{gap:10px}.ownership-nav a{flex:1;padding:12px}.fc-ownership .store-group{gap:20px}}
 </style>
-<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style><style>[data-store-scroll]{overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;padding-right:8px}[data-store-scroll] .store-group-head{position:static}[data-store-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}#storeScrollNote{font-size:14px;color:#6c6353;margin:12px 0 24px;line-height:1.8}</style></head>
+<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style><style>.store-list-panel{min-width:0;min-height:0;align-self:start}.store-list[data-store-scroll]{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;padding-right:8px;box-sizing:border-box}.store-list[data-store-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}.store-scroll-note{font-size:14px;color:#6c6353;margin:12px 0 0;line-height:1.8}</style></head>
 <body class="variant-hybrid">
 <header class="site-header">
   <a class="brand" href="#top">株式会社ビーラボ</a>
@@ -157,7 +157,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
     </div>
 
     <nav class="ownership-nav" aria-label="店舗区分から探す"><a href="stores.html">店舗一覧を見る</a><a href="fc-stores.html">FC加盟店を見る</a></nav>
-<div id="storeSearchResults" data-store-scroll role="region" aria-label="店舗検索結果。続きは枠内をスクロール" hidden><section class="store-ownership" id="direct-stores" aria-label="店舗一覧"><div class="store-groups" id="storeGroups">
+<div id="storeSearchResults" hidden><section class="store-ownership" id="direct-stores" aria-label="店舗一覧"><div class="store-groups" id="storeGroups">
 
       <section class="store-group" id="stores-thai" data-category="タイ式マッサージ タイ古式 マタニティマッサージ マタニティ リラクゼーション">
         <div class="store-group-head">
@@ -243,7 +243,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 </div></section>
 
 </div>
-<p id="storeScrollNote" hidden>6店舗目以降は、一覧の中をスクロールしてご覧ください。</p>
+
 <div class="store-empty" id="storeEmpty" hidden>
       該当する店舗が見つかりませんでした。
     </div>
@@ -396,36 +396,58 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 </script>
 <script src="youtube-news.js" defer></script>
 <script>(function(){
-const box=document.querySelector('[data-store-scroll]');
-if(!box)return;
-const note=document.getElementById('storeScrollNote');
-function resizeList(reset){
-  if(reset)box.scrollTop=0;
-  const rows=[...box.querySelectorAll('.store-row')].filter(row=>!row.hidden && row.getClientRects().length);
-  box.style.maxHeight='none';
-  if(rows.length>5){
-    const top=box.getBoundingClientRect().top;
-    const bottom=rows[4].getBoundingClientRect().bottom;
-    box.style.maxHeight=Math.ceil(bottom-top+box.scrollTop)+'px';
-    box.setAttribute('tabindex','0');
-    note.hidden=false;
-  }else{
-    box.removeAttribute('tabindex');
+  const lists=[...document.querySelectorAll('.store-group .store-list')].map((box,index)=>{
+    const group=box.closest('.store-group');
+    const panel=document.createElement('div');
+    panel.className='store-list-panel';
+    box.parentNode.insertBefore(panel,box);
+    panel.appendChild(box);
+    box.setAttribute('data-store-scroll','');
+    box.setAttribute('role','region');
+    const title=group.querySelector('h2,h3,h4');
+    box.setAttribute('aria-label',(title?title.textContent.trim():'店舗')+'の店舗一覧');
+    const note=document.createElement('p');
+    note.className='store-scroll-note';
+    note.id='store-scroll-note-'+index;
+    note.textContent='6店舗目以降は、この一覧の中をスクロールしてご覧ください。';
     note.hidden=true;
+    panel.appendChild(note);
+    return {box,note};
+  });
+  function resizeLists(reset){
+    lists.forEach(({box,note})=>{
+      const previous=reset?0:box.scrollTop;
+      box.style.maxHeight='none';
+      const rows=[...box.querySelectorAll('.store-row')].filter(row=>!row.hidden && row.getClientRects().length>0);
+      const scrollable=rows.length>5;
+      if(scrollable){
+        const border=parseFloat(getComputedStyle(box).borderTopWidth)||0;
+        const height=rows[4].getBoundingClientRect().bottom-rows[0].getBoundingClientRect().top+border;
+        box.style.maxHeight=Math.ceil(height)+'px';
+        box.setAttribute('tabindex','0');
+        box.setAttribute('aria-describedby',note.id);
+      }else{
+        box.removeAttribute('tabindex');
+        box.removeAttribute('aria-describedby');
+      }
+      note.hidden=!scrollable;
+      box.scrollTop=previous;
+    });
   }
-}
-const search=document.getElementById('storeSearch');
-if(search)search.addEventListener('input',()=>resizeList(true));
-const clear=document.getElementById('storeSearchClear');
-if(clear)clear.addEventListener('click',()=>resizeList(true));
-window.addEventListener('resize',()=>resizeList(false));
-function revealHash(){
-  resizeList(false);
-  let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}
-  if(target && box.contains(target))target.scrollIntoView({block:'start'});
-}
-resizeList(true);
-if(document.fonts)document.fonts.ready.then(revealHash);
-window.addEventListener('hashchange',revealHash);
+  const search=document.getElementById('storeSearch');
+  if(search)search.addEventListener('input',()=>resizeLists(true));
+  const clear=document.getElementById('storeSearchClear');
+  if(clear)clear.addEventListener('click',()=>resizeLists(true));
+  window.addEventListener('resize',()=>resizeLists(false));
+  function revealHash(){
+    resizeLists(false);
+    let target;
+    try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}
+    if(target && target.closest('.store-group'))target.scrollIntoView({block:'start'});
+  }
+  resizeLists(true);
+  if(document.fonts)document.fonts.ready.then(revealHash);
+  window.addEventListener('load',()=>resizeLists(false));
+  window.addEventListener('hashchange',revealHash);
 })();</script></body>
 </html>
