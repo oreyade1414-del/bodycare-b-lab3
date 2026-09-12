@@ -71,7 +71,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 .store-group h4{font:500 25px/1.6 var(--serif);margin:8px 0 0}
 @media(max-width:760px){.ownership-heading{display:block;margin-bottom:28px}.ownership-heading p{margin-top:12px}.ownership-heading h3{font-size:27px}.fc-ownership{padding:24px 16px;margin-top:48px}.store-group h4{font-size:23px}.ownership-nav{gap:10px}.ownership-nav a{flex:1;padding:12px}.fc-ownership .store-group{gap:20px}}
 </style>
-<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style><style>.store-list-panel{min-width:0;min-height:0;align-self:start}.store-list[data-store-scroll]{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;padding-right:8px;box-sizing:border-box}.store-list[data-store-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}.store-scroll-note{font-size:14px;color:#6c6353;margin:12px 0 0;line-height:1.8}</style></head>
+<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style><style>.store-list-panel{min-width:0;min-height:0;align-self:start}.store-list[data-store-scroll]{display:block;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;padding-right:8px;box-sizing:border-box}.store-list[data-store-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}.store-scroll-note{font-size:14px;color:#6c6353;margin:12px 0 0;line-height:1.8}</style><style>.information-panel{min-width:0;min-height:0;align-self:start}.information-list[data-news-scroll]{overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;box-sizing:border-box}.information-list[data-news-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}.info-layout .information-scroll-note{font-size:13px;margin:12px 0 0;line-height:1.8;color:#6c6353}</style></head>
 <body class="variant-hybrid">
 <header class="site-header">
   <a class="brand" href="#top">株式会社ビーラボ</a>
@@ -104,6 +104,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 <section class="section information" id="information" aria-labelledby="information-title">
 <div class="info-layout"><div><div class="kicker">INFORMATION</div><h2 id="information-title">お知らせ</h2><p>ビーラボからの最新情報。</p></div>
 <div class="information-list">
+<a class="information-item" href="#stores"><time datetime="2026-09-12">2026.09.12</time><span class="info-category">STORES</span><strong>FC加盟店を含む全39店舗の情報を掲載しました</strong><span class="info-arrow" aria-hidden="true">→</span></a>
 <a class="information-item" id="youtube-information" href="youtube.html"><span class="info-category">YouTube</span><strong>社長・スタッフのチャンネルはこちら</strong><span class="info-arrow" aria-hidden="true">→</span></a>
 <div class="information-item"><time datetime="2026-09-11">2026.09.11</time><span class="info-category">NEWS</span><strong>コーポレートサイトを公開しました</strong></div>
 <a class="information-item" href="blogs.html"><span class="info-category">BLOG</span><strong>各店舗のブログはこちら</strong><span class="info-arrow" aria-hidden="true">→</span></a>
@@ -153,7 +154,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
         <input id="storeSearch" type="search" placeholder="例：錦糸町、整体" autocomplete="off" />
         <button id="storeSearchClear" type="button" aria-label="検索をクリア">クリア</button>
       </div>
-      <p id="storeSearchCount" class="store-search-count" role="status" aria-live="polite"></p>
+      <p id="storeSearchCount" class="store-search-count" role="status" aria-live="polite">全39店舗から検索できます。キーワードを入力してください。</p>
     </div>
 
     <nav class="ownership-nav" aria-label="店舗区分から探す"><a href="stores.html">店舗一覧を見る</a><a href="fc-stores.html">FC加盟店を見る</a></nav>
@@ -349,7 +350,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
   const storeSearchCount = document.getElementById('storeSearchCount');
   const storeEmpty = document.getElementById('storeEmpty');
   const storeGroups = [...document.querySelectorAll('.store-group')];
-  const storeRows = [...document.querySelectorAll('.store-row')];
+  const storeRows = [...document.querySelectorAll('#storeSearchResults .store-row')];
 
   const normalizeStoreText = (value) =>
     (value || '').toLowerCase().normalize('NFKC').replace(/\s+/g, '');
@@ -462,5 +463,43 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
   if(document.fonts)document.fonts.ready.then(revealHash);
   window.addEventListener('load',()=>resizeLists(false));
   window.addEventListener('hashchange',revealHash);
+})();</script><script>(function(){
+ const box=document.querySelector('.information-list');
+ if(!box)return;
+ const panel=document.createElement('div');
+ panel.className='information-panel';
+ box.parentNode.insertBefore(panel,box);
+ panel.appendChild(box);
+ box.setAttribute('data-news-scroll','');
+ box.setAttribute('role','region');
+ box.setAttribute('aria-label','お知らせ一覧');
+ const note=document.createElement('p');
+ note.className='information-scroll-note';
+ note.id='information-scroll-note';
+ note.textContent='6件目以降は、この一覧の中をスクロールしてご覧ください。';
+ note.hidden=true;
+ panel.appendChild(note);
+ function resizeNews(){
+   const previous=box.scrollTop;
+   box.style.maxHeight='none';
+   const items=[...box.querySelectorAll('.information-item')].filter(item=>!item.hidden && item.getClientRects().length);
+   if(items.length>5){
+     const height=items[4].getBoundingClientRect().bottom-items[0].getBoundingClientRect().top+(parseFloat(getComputedStyle(box).borderTopWidth)||0);
+     box.style.maxHeight=Math.ceil(height)+'px';
+     box.setAttribute('tabindex','0');
+     box.setAttribute('aria-describedby',note.id);
+     note.hidden=false;
+   }else{
+     box.removeAttribute('tabindex');
+     box.removeAttribute('aria-describedby');
+     note.hidden=true;
+   }
+   box.scrollTop=previous;
+ }
+ new MutationObserver(resizeNews).observe(box,{childList:true,subtree:true,characterData:true});
+ window.addEventListener('resize',resizeNews);
+ window.addEventListener('load',resizeNews);
+ if(document.fonts)document.fonts.ready.then(resizeNews);
+ resizeNews();
 })();</script></body>
 </html>
