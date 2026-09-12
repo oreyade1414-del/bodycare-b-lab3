@@ -71,7 +71,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 .store-group h4{font:500 25px/1.6 var(--serif);margin:8px 0 0}
 @media(max-width:760px){.ownership-heading{display:block;margin-bottom:28px}.ownership-heading p{margin-top:12px}.ownership-heading h3{font-size:27px}.fc-ownership{padding:24px 16px;margin-top:48px}.store-group h4{font-size:23px}.ownership-nav{gap:10px}.ownership-nav a{flex:1;padding:12px}.fc-ownership .store-group{gap:20px}}
 </style>
-<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style></head>
+<style>.ownership-nav a{min-width:220px;justify-content:space-between;gap:32px;background:#fffdf8}.ownership-nav a::after{content:"→"}#storeSearchResults{margin-top:32px}@media(max-width:760px){.ownership-nav{flex-direction:column}.ownership-nav a{min-width:0;width:100%;padding:20px}}</style><style>[data-store-scroll]{overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#806738 #eee8dd;-webkit-overflow-scrolling:touch;padding-right:8px}[data-store-scroll] .store-group-head{position:static}[data-store-scroll]:focus-visible{outline:2px solid #806738;outline-offset:4px}#storeScrollNote{font-size:14px;color:#6c6353;margin:12px 0 24px;line-height:1.8}</style></head>
 <body class="variant-hybrid">
 <header class="site-header">
   <a class="brand" href="#top">株式会社ビーラボ</a>
@@ -157,7 +157,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
     </div>
 
     <nav class="ownership-nav" aria-label="店舗区分から探す"><a href="stores.html">店舗一覧を見る</a><a href="fc-stores.html">FC加盟店を見る</a></nav>
-<div id="storeSearchResults" hidden><section class="store-ownership" id="direct-stores" aria-label="店舗一覧"><div class="store-groups" id="storeGroups">
+<div id="storeSearchResults" data-store-scroll role="region" aria-label="店舗検索結果。続きは枠内をスクロール" hidden><section class="store-ownership" id="direct-stores" aria-label="店舗一覧"><div class="store-groups" id="storeGroups">
 
       <section class="store-group" id="stores-thai" data-category="タイ式マッサージ タイ古式 マタニティマッサージ マタニティ リラクゼーション">
         <div class="store-group-head">
@@ -243,6 +243,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 </div></section>
 
 </div>
+<p id="storeScrollNote" hidden>6店舗目以降は、一覧の中をスクロールしてご覧ください。</p>
 <div class="store-empty" id="storeEmpty" hidden>
       該当する店舗が見つかりませんでした。
     </div>
@@ -394,5 +395,37 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
   });
 </script>
 <script src="youtube-news.js" defer></script>
-</body>
+<script>(function(){
+const box=document.querySelector('[data-store-scroll]');
+if(!box)return;
+const note=document.getElementById('storeScrollNote');
+function resizeList(reset){
+  if(reset)box.scrollTop=0;
+  const rows=[...box.querySelectorAll('.store-row')].filter(row=>!row.hidden && row.getClientRects().length);
+  box.style.maxHeight='none';
+  if(rows.length>5){
+    const top=box.getBoundingClientRect().top;
+    const bottom=rows[4].getBoundingClientRect().bottom;
+    box.style.maxHeight=Math.ceil(bottom-top+box.scrollTop)+'px';
+    box.setAttribute('tabindex','0');
+    note.hidden=false;
+  }else{
+    box.removeAttribute('tabindex');
+    note.hidden=true;
+  }
+}
+const search=document.getElementById('storeSearch');
+if(search)search.addEventListener('input',()=>resizeList(true));
+const clear=document.getElementById('storeSearchClear');
+if(clear)clear.addEventListener('click',()=>resizeList(true));
+window.addEventListener('resize',()=>resizeList(false));
+function revealHash(){
+  resizeList(false);
+  let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}
+  if(target && box.contains(target))target.scrollIntoView({block:'start'});
+}
+resizeList(true);
+if(document.fonts)document.fonts.ready.then(revealHash);
+window.addEventListener('hashchange',revealHash);
+})();</script></body>
 </html>
