@@ -64,6 +64,13 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 .staff-feature{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:0;background:#24271f;border:1px solid #ffffff38;color:#f7f4ee;overflow:hidden}.staff-feature>img{display:block;width:100%;height:auto;align-self:center}.staff-feature-copy{padding:clamp(24px,4vw,48px)}.staff-feature-year{font-size:14px;color:#d4bb89}.staff-feature-copy h3{font:500 clamp(24px,2.7vw,36px)/1.7 var(--serif);margin:18px 0 24px}.staff-feature-copy .staff-feature-name{font:500 22px/1.6 var(--serif);margin:0 0 24px;color:#f7f4ee}.staff-feature-more{display:flex;justify-content:space-between;gap:24px;font-size:14px;border-top:1px solid #ffffff38;padding-top:18px}.staff-feature:hover{border-color:#d4bb89}.staff-feature:hover .staff-feature-more{color:#d4bb89}
 @media(max-width:760px){.staff-feature{grid-template-columns:minmax(0,1fr)}.staff-feature-copy{padding:26px 24px}.staff-feature-copy h3{font-size:28px;margin:14px 0 20px}}
 </style>
+<style>
+.ownership-nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}.ownership-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border:1px solid var(--gold);font-size:14px}.ownership-nav a:hover{background:var(--ink);color:#fff}
+.ownership-heading{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:0 0 24px;margin-bottom:36px;border-bottom:1px solid #b9b09f}.ownership-heading h3{font:500 30px/1.6 var(--serif);margin:8px 0 0}.ownership-heading p{margin:0;font-size:14px}
+.fc-ownership{margin-top:64px;padding:36px;background:#fffdf8;border:1px solid var(--line)}
+.store-group h4{font:500 25px/1.6 var(--serif);margin:8px 0 0}
+@media(max-width:760px){.ownership-heading{display:block;margin-bottom:28px}.ownership-heading p{margin-top:12px}.ownership-heading h3{font-size:27px}.fc-ownership{padding:24px 16px;margin-top:48px}.store-group h4{font-size:23px}.ownership-nav{gap:10px}.ownership-nav a{flex:1;padding:12px}.fc-ownership .store-group{gap:20px}}
+</style>
 </head>
 <body class="variant-hybrid">
 <header class="site-header">
@@ -76,7 +83,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
     <a href="blogs.html">ブログをチェック</a>
     <a href="youtube.html">YouTube・動画</a>
     <a href="#recruit">採用情報</a>
-    <a class="nav-cta" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">予約</a>
+    <a class="nav-cta" href="#stores">予約</a>
   </nav>
 </header>
 
@@ -136,7 +143,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
         <div class="kicker">LOCATIONS</div>
         <h2>店舗一覧</h2>
       </div>
-      <p>店舗名・ブランド名・サービス名から検索できます。各店舗名から、店舗情報・予約ページをご覧いただけます。</p>
+      <p>店舗名・ブランド名・サービス名から検索できます。FC加盟店は別枠でご紹介しています。各店舗名から、店舗情報・予約ページをご覧いただけます。</p>
     </div>
 
     <a class="blog-gateway" href="blogs.html"><span><strong>ブログをチェック</strong><span>お店の日常や、スタッフの発信はこちらから。</span></span><span class="gateway-arrow" aria-hidden="true">→</span></a>
@@ -149,14 +156,15 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
       <p id="storeSearchCount" class="store-search-count" role="status" aria-live="polite"></p>
     </div>
 
-    <div class="store-groups" id="storeGroups">
+    <nav class="ownership-nav" aria-label="店舗区分から探す"><a href="#direct-stores">店舗一覧を見る</a><a href="#fc-stores">FC加盟店を見る</a></nav>
+<section class="store-ownership" id="direct-stores" aria-label="店舗一覧"><div class="store-groups" id="storeGroups">
 
       <section class="store-group" id="stores-thai" data-category="タイ式マッサージ タイ古式 マタニティマッサージ マタニティ リラクゼーション">
         <div class="store-group-head">
           <span class="store-group-no">01</span>
           <div>
             <div class="store-group-en">THAI TRADITIONAL & MATERNITY MASSAGE</div>
-            <h3>タイ古式マッサージ＆マタニティマッサージ</h3>
+            <h4>タイ古式マッサージ＆マタニティマッサージ</h4>
           </div>
         </div>
         <div class="store-list">
@@ -171,7 +179,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
           <span class="store-group-no">02</span>
           <div>
             <div class="store-group-en">PERSONAL TRAINING & KICKBOXING</div>
-            <h3>パーソナルトレーニング＆キックボクシング</h3>
+            <h4>パーソナルトレーニング＆キックボクシング</h4>
           </div>
         </div>
         <div class="store-list">
@@ -185,7 +193,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
           <span class="store-group-no">03</span>
           <div>
             <div class="store-group-en">BODY CONDITIONING</div>
-            <h3>整体</h3>
+            <h4>整体</h4>
           </div>
         </div>
         <div class="store-list">
@@ -200,7 +208,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
           <span class="store-group-no">04</span>
           <div>
             <div class="store-group-en">BEAUTY & ESTHETIC</div>
-            <h3>脱毛エステ</h3>
+            <h4>脱毛エステ</h4>
           </div>
         </div>
         <div class="store-list">
@@ -210,7 +218,31 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 
     </div>
 
-    <div class="store-empty" id="storeEmpty" hidden>
+    </section>
+<section class="store-ownership fc-ownership" id="fc-stores" aria-labelledby="fc-stores-title">
+<div class="ownership-heading"><div><div class="kicker">FRANCHISE STORES</div><h3 id="fc-stores-title">FC加盟店</h3></div><p>フランチャイズ加盟店をご紹介します。</p></div>
+<div class="store-groups" id="fcStoreGroups">
+<section class="store-group" id="fc-stores-thai" data-category="FC FC店 FC加盟店 フランチャイズ タイ式 タイ古式 マッサージ リラクゼーション">
+<div class="store-group-head"><span class="store-group-no">01</span><div><div class="store-group-en">THAI TRADITIONAL MASSAGE</div><h4>タイ古式マッサージ</h4></div></div>
+<div class="store-list"><div class="store-row" data-search="ビーラボ 幡ヶ谷六号通り店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000264463/" target="_blank" rel="noopener">ビーラボ 幡ヶ谷六号通り店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 水天宮前店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000269533/" target="_blank" rel="noopener">ビーラボ 水天宮前店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 初台店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000296348/" target="_blank" rel="noopener">ビーラボ 初台店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 新橋銀座口店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000310720/" target="_blank" rel="noopener">ビーラボ 新橋銀座口店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 代々木上原店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000338087/" target="_blank" rel="noopener">ビーラボ 代々木上原店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 品川大井町店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000340255/" target="_blank" rel="noopener">ビーラボ 品川大井町店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ネクシア 恵比寿（NEXIA EBISU）"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000396711/" target="_blank" rel="noopener">ネクシア 恵比寿（NEXIA EBISU）<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 御徒町南口店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000399648/" target="_blank" rel="noopener">ビーラボ 御徒町南口店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 千歳船橋駅前店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000406644/" target="_blank" rel="noopener">ビーラボ 千歳船橋駅前店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 井の頭通り店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000439235/" target="_blank" rel="noopener">ビーラボ 井の頭通り店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 八丁堀店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000439241/" target="_blank" rel="noopener">ビーラボ 八丁堀店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ なかもず店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000610708/" target="_blank" rel="noopener">ビーラボ なかもず店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="ビーラボ 武蔵小山店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000653392/" target="_blank" rel="noopener">ビーラボ 武蔵小山店<span class="store-booking">店舗情報・予約 ↗</span></a></div>
+<div class="store-row" data-search="さちゃわら 向ヶ丘遊園店"><a class="store-name" href="https://beauty.hotpepper.jp/kr/slnH000695261/" target="_blank" rel="noopener">さちゃわら 向ヶ丘遊園店<span class="store-booking">店舗情報・予約 ↗</span></a></div></div>
+</section>
+<!-- 整体・パーソナル・脱毛のFC加盟店は、確認済み店舗が届いたらここへ業種別store-groupを追加。data-categoryに「FC FC加盟店」と業種名を設定する。 -->
+</div></section>
+
+<div class="store-empty" id="storeEmpty" hidden>
       該当する店舗が見つかりませんでした。
     </div>
   </section>
@@ -330,8 +362,11 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
       group.hidden = groupVisible === 0;
     });
 
+    document.querySelectorAll('.store-ownership').forEach(section => {
+      section.hidden = ![...section.querySelectorAll('.store-group')].some(group => !group.hidden);
+    });
     if (storeSearchCount) {
-      storeSearchCount.textContent = query ? `${visibleCount}店舗が該当` : `全${storeRows.length}店舗`;
+      storeSearchCount.textContent = query ? `${visibleCount}店舗が該当` : `全${storeRows.length}店舗（FC加盟店を含む）`;
     }
     if (storeEmpty) storeEmpty.hidden = visibleCount !== 0;
   }
@@ -350,7 +385,7 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
   }
 
 
-  document.querySelectorAll('.business-card-link, .brand-tile').forEach(card => {
+  document.querySelectorAll('.business-card-link, .brand-tile, .ownership-nav a').forEach(card => {
     card.addEventListener('click', () => {
       if (storeSearch.value) { storeSearch.value = ''; filterStores(); }
     });
