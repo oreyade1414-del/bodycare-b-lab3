@@ -1,3 +1,2 @@
-// Configure a verified HTTPS form submission endpoint before opening reception.
-// Do not put private API credentials in this public file.
-window.BLAB_CONTACT_CONFIG = Object.freeze({ endpoint: '' });
+// Public form endpoint; no private API credentials.
+window.BLAB_CONTACT_CONFIG = Object.freeze({ endpoint: 'https://formsubmit.co/blab.recruit@gmail.com' });

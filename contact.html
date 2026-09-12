@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="contact.css">
-  <script src="contact-config.js" defer></script>
-  <script src="contact.js" defer></script>
+  <script src="contact-config.js?v=mail-setup" defer></script>
+  <script src="contact.js?v=mail-setup" defer></script>
 </head>
 <body>
   <header class="site-header"><a class="brand" href="index.html">株式会社ビーラボ</a><a class="back-link" href="index.html#recruit">採用・独立支援へ戻る <span aria-hidden="true">↗</span></a></header>
@@ -19,7 +19,9 @@
     <div class="contact-main">
       <nav class="breadcrumb" aria-label="パンくず"><a href="index.html">ホーム</a><span aria-hidden="true"> / </span><span>お問い合わせ</span></nav>
       <div class="page-heading"><p class="kicker">RECRUIT &amp; INDEPENDENCE</p><h1>採用・独立支援の<br class="mobile-break">お問い合わせ</h1><p>ご希望の件名を選び、下記をご入力ください。</p></div>
-      <form id="contactForm" method="post">
+      <form id="contactForm" method="post" action="https://formsubmit.co/blab.recruit@gmail.com">
+        <input type="hidden" name="_subject" id="emailSubject" value="【B-LAB】独立支援について">
+        <input type="hidden" name="_template" value="table">
         <fieldset class="subject-field"><legend>件名 <span class="required">必須</span></legend><div class="subject-tabs">
           <label><input type="radio" name="subject" value="独立支援について" checked required><span>独立支援について</span></label>
           <label><input type="radio" name="subject" value="採用応募" required><span>採用応募</span></label>
@@ -29,11 +31,11 @@
         <div class="field"><label for="gender">性別</label><select id="gender" name="gender"><option value="">選択してください</option value="男性">男性</option><option value="女性">女性</option><option value="その他">その他</option><option value="回答しない">回答しない</option></select></div>
         <div class="field"><label for="email">返信用メールアドレス <span class="required">必須</span></label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="example@email.com" required></div>
         <div class="field"><label for="message">本文 <span class="required">必須</span></label><textarea id="message" name="message" rows="8" maxlength="10000" placeholder="ご質問やご相談、応募についてお聞かせください。" required></textarea></div>
-        <div class="honey" aria-hidden="true"><label for="website">この欄は入力しないでください</label><input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
-        <p class="data-note">ご入力いただいた内容は、お問い合わせへの対応・ご連絡のために使用します。</p>
-        <p class="form-status" id="formStatus" role="status" aria-live="polite">現在、お問い合わせの受付準備中です。受付開始までお待ちください。</p>
-        <button class="submit-button" id="submitButton" type="submit" disabled>送信 <span aria-hidden="true">→</span></button>
-        <noscript><p class="form-status">フォームのご利用にはJavaScriptを有効にしてください。</p></noscript>
+        <div class="honey" aria-hidden="true"><label for="website">この欄は入力しないでください</label><input id="website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+        <p class="data-note">ご入力いただいた内容は、お問い合わせへの対応・ご連絡のために使用します。送信にはFormSubmitを利用します。</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <button class="submit-button" id="submitButton" type="submit">送信 <span aria-hidden="true">→</span></button>
+        
       </form>
     </div>
   </main>
