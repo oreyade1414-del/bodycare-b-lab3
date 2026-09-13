@@ -92,6 +92,8 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 .fit-brand-link{font-size:14px;display:flex;gap:24px;align-items:center;color:var(--gold)}
 @media(max-width:760px){.fit-brand-banner{grid-template-columns:minmax(0,1fr);gap:22px;padding:28px 24px;margin-bottom:32px}.fit-brand-logo{max-width:400px;margin:auto}.fit-brand-copy{border-left:0;border-top:1px solid var(--line);padding:20px 0 0;gap:8px}.fit-brand-service{font-size:14px}.fit-brand-link{align-self:stretch;justify-content:space-between}}
 </style>
+<link rel="stylesheet" href="hero-video.css">
+<script src="hero-video.js" defer></script>
 </head>
 <body class="variant-hybrid">
 <header class="site-header">
@@ -111,6 +113,8 @@ footer.site-footer{display:block;padding:64px var(--gutter) 24px}.footer-inner{m
 <main id="top">
   <section class="hero">
     <div class="hero-grid" aria-hidden="true"><div class="hero-a"></div><div class="hero-b"></div><div class="hero-c"></div></div>
+    <video class="hero-video" id="heroVideo" data-src="assets/hero-businesses.mp4" poster="assets/hero-businesses-poster.jpg" autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <button class="hero-video-toggle" id="heroVideoToggle" type="button" hidden aria-label="背景動画を停止">背景動画を停止</button>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>“癒し”と“活力”を<br>提供したい。</h1>
